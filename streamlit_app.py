@@ -4,8 +4,7 @@ import os
 
 # Use environment variable or hardcoded key (for local testing only)
 # openai.api_key = os.getenv("OPENAI_API_KEY") or "your-api-key-here"
-openai.api_key = "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"
-
+openai.api_key = "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"
 
 st.set_page_config(page_title="AI Companion", layout="centered")
 st.title("🤖 Your AI Companion")
