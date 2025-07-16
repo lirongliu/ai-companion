@@ -1,13 +1,19 @@
 import openai
 import streamlit as st
+import os
 
-# Set your OpenAI API key
+# Use environment variable or hardcoded key (for local testing only)
+# openai.api_key = os.getenv("OPENAI_API_KEY") or "your-api-key-here"
 openai.api_key = "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"
+
 
 st.set_page_config(page_title="AI Companion", layout="centered")
 st.title("🤖 Your AI Companion")
 
-# System prompt to shape the companion's personality
+# Set up assistant using new API
+client = openai.OpenAI()
+
+# System message
 system_prompt = {
     "role": "system",
     "content": (
@@ -18,22 +24,23 @@ system_prompt = {
     )
 }
 
-# Initialize chat history
+# Chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [system_prompt]
 
-# Display conversation history
+# Show chat
 for msg in st.session_state.messages[1:]:
     role = "🧑 You" if msg["role"] == "user" else "🤖 Mira"
     st.markdown(f"**{role}:** {msg['content']}")
 
-# User input
+# Input box
 user_input = st.text_area("Your thoughts...", height=100)
+
 if st.button("Send") and user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
 
     with st.spinner("Mira is thinking..."):
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4o",
             messages=st.session_state.messages,
             temperature=0.7
