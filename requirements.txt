@@ -1,2 +1,2 @@
-openai>=1.10
-streamlit>=1.32
+openai
+streamlit
