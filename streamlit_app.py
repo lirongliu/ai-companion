@@ -11,7 +11,7 @@ st.set_page_config(page_title="AI Companion", layout="centered")
 st.title("🤖 Your AI Companion")
 
 # Set up assistant using new API
-client = openai.OpenAI()
+client = openai.OpenAI(api_key=openai.api_key)
 
 # System message
 system_prompt = {
