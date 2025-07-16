@@ -46,3 +46,9 @@ if st.button("Send") and user_input:
         reply = response.choices[0].message.content
         st.session_state.messages.append({"role": "assistant", "content": reply})
         st.rerun()
+
+
+# Debug button to print all messages to the console
+if st.button("🔍 Print Chat History to Console"):
+    for msg in st.session_state.messages:
+        print(f"{msg['role']}: {msg['content']}")
