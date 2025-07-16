@@ -3,8 +3,7 @@ import streamlit as st
 import os
 
 # Use environment variable or hardcoded key (for local testing only)
-# openai.api_key = os.getenv("OPENAI_API_KEY") or "your-api-key-here"
-openai.api_key = "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"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 st.set_page_config(page_title="AI Companion", layout="centered")
 st.title("🤖 Your AI Companion")
